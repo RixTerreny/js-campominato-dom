@@ -8,6 +8,8 @@ function gridGenerator(numBox) {
     let totBox = numBox*numBox;
     boxContainer.innerHTML = ""
 
+    let punteggio=0;
+
     //creazione caselle
     for (let i = 0; i < totBox; i++) {
         boxContainer.innerHTML += `<div class='box ' style='flex-basis: calc(100%/ ${numBox})'> ${i+1}</div>`;
@@ -19,8 +21,16 @@ function gridGenerator(numBox) {
             const box = boxesList[i];
 
             box.addEventListener("click", function(){
-                this.classList.toggle("bg-primary");
-                console.log( i + 1);
+                if(this.classList.contains("bg-primary")){
+                    return;
+                }
+                this.classList.add("bg-primary");
+                punteggio++;
+                console.log(punteggio);
+
+                if (punteggio==84){
+                    alert("🎇Hai vinto🎆")
+                }
             });
     }
 
@@ -41,7 +51,8 @@ function gridGenerator(numBox) {
         arrayDiv[arrBomb[i]].addEventListener("click", function(){
             this.classList.remove("bg-primary");
             arrayDiv[arrBomb[i]].classList.add("bomb");
-            alert("Hai Perso")
+            punteggio--;
+            alert("Hai Perso, il tuo punteggio è "+ punteggio)
         })
     };
 
