@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    background-color: aquamarine;
+    min-height: 100vh;
+}
+
+button{
+    border-radius: 25px;
+}
+
+.box-container .bomb{
+    background-color: rgb(255, 2, 2);
+}
+
+.box:hover{
+    background-color: rgb(9, 38, 118);
+}
+
+.box{
+    background-color: rgb(81, 150, 41);
+    border: 2px solid black;
+    aspect-ratio: 1/1;
+}
