@@ -14,28 +14,25 @@ function gridGenerator(numBox) {
     //creazione caselle
     for (let i = 0; i < totBox; i++) {
         boxContainer.innerHTML += `<div class='box ' style='flex-basis: calc(100%/ ${numBox})'> ${i+1}</div>`;
-        }
+    }
 
-        const boxesList= boxContainer.querySelectorAll(".box");
-
-        for (let i = 0; i < boxesList.length; i++) {
-            const box = boxesList[i];
-
-            box.addEventListener("click", function(){
-                if (triggerBomba == true){
-                    return;
-                }
-                if(this.classList.contains("bg-primary")){
-                    return;
-                }
-                this.classList.add("bg-primary");
-                punteggio++;
-                console.log(punteggio);
-
-                if (punteggio==84){
-                    alert("🎇Hai vinto🎆")
-                }
-            });
+    const boxesList= boxContainer.querySelectorAll(".box");
+    for (let i = 0; i < boxesList.length; i++) {
+        const box = boxesList[i];
+        box.addEventListener("click", function(){
+            if (triggerBomba == true){
+                return;
+            }
+            if(this.classList.contains("bg-prima ry")){
+                return;
+            }
+            this.classList.add("bg-primary");
+            punteggio++;
+            console.log(punteggio-1);
+            if (punteggio==84){
+                alert("🎇Hai vinto🎆")
+            }
+        });
     }
 
     //creazione bombe
@@ -56,6 +53,7 @@ function gridGenerator(numBox) {
             if (triggerBomba == true){
                 return;
             }
+
             for (let j = 0; j < arrBomb.length; j++){
                 arrayDiv[arrBomb[j]].classList.remove("bg-primary");
                 arrayDiv[arrBomb[j]].classList.add("bomb");
@@ -74,5 +72,6 @@ function gridGenerator(numBox) {
 btn.addEventListener("click", function(){
     btn.classList.toggle("bg-primary");
     btn.classList.toggle("bg-secondary");
+    triggerBomba = false;
     gridGenerator(10);
 });
