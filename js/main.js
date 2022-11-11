@@ -1,4 +1,5 @@
 const btn = document.getElementById("btn");
+let triggerBomba = false;
 
 /**
  * @param {number} numBox numero di celle
@@ -21,6 +22,9 @@ function gridGenerator(numBox) {
             const box = boxesList[i];
 
             box.addEventListener("click", function(){
+                if (triggerBomba == true){
+                    return;
+                }
                 if(this.classList.contains("bg-primary")){
                     return;
                 }
@@ -47,12 +51,20 @@ function gridGenerator(numBox) {
     //assegnazione bombe alle caselle
     for (let i = 0; i < arrBomb.length; i++) {
         let arrayDiv = document.querySelectorAll(".box");
-        
+
         arrayDiv[arrBomb[i]].addEventListener("click", function(){
-            this.classList.remove("bg-primary");
-            arrayDiv[arrBomb[i]].classList.add("bomb");
+            if (triggerBomba == true){
+                return;
+            }
+            for (let j = 0; j < arrBomb.length; j++){
+                arrayDiv[arrBomb[j]].classList.remove("bg-primary");
+                arrayDiv[arrBomb[j]].classList.add("bomb");
+            }
+
             punteggio--;
-            alert("Hai Perso, il tuo punteggio è "+ punteggio)
+
+            alert("Hai Perso, il tuo punteggio è "+ punteggio);
+            triggerBomba = true;
         })
     };
 
